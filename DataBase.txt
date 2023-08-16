@@ -1,0 +1,3 @@
+UserName:bikeStore
+password:ecUbP0dzvQ74NkiG
+conect: mongodb+srv://bikeStore:<password>@bikestore.cnurykx.mongodb.net/
