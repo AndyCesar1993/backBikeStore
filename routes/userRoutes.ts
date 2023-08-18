@@ -8,7 +8,6 @@ const router = Router()
 
 router.post('/register',[
     check("name","El nombre es obligatorio").not().isEmpty(),
-    check("surname","El apellido es obligatorio").not().isEmpty(),
     check("dateOfBirth","La fecha de nacimiento es obligatoria").not().isEmpty(),
     check("username","El nombre de usuario es obligatorio").not().isEmpty(),
     check("email","El email es obligatorio").isEmail(),

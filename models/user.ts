@@ -3,7 +3,6 @@ import { ROLES } from "../helpers/constants";
 
 export interface IsUser{
     name: string;
-    surname: string;
     dateOfBirth: number;
     username: string;
     email:string;
@@ -18,10 +17,6 @@ const UserSchema = new Schema<IsUser>({
     name:{
         type: String,
         required: [true, "El nombre es obligatorio"]
-    },
-    surname:{
-        type: String,
-        required: [true, "El apellido es obligatorio"]
     },
     dateOfBirth:{
         type: Number,

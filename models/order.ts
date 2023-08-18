@@ -9,7 +9,6 @@ interface IsShippingDetails{
 }
 
 interface IsItem{
-    desc: string;
     id: number;
     price: number;
     quantity: number;
@@ -46,13 +45,13 @@ const OrderSchema =  new Schema<IsOrder>({
     },
     items: {
         type: [{
-            desc: {
-                type: String,
-                required: true
-            },
             id: {
                 type: Number,
                 required: true
+            },
+            price:{
+                type:Number,
+                required:true
             },
             quantity: {
                 type: Number,

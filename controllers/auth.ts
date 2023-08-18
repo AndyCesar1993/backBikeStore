@@ -7,8 +7,8 @@ import randomstring from "randomstring"
 import generateJWT from "../helpers/generateJWT";
 
 export const register = async (req:Request, res:Response):Promise<void>=>{
-    const {name, surname, dateOfBirth, username, email, password}:IsUser = req.body
-    const user = new User({name, surname, dateOfBirth, username, email, password})
+    const {name, dateOfBirth, username, email, password}:IsUser = req.body
+    const user = new User({name, dateOfBirth, username, email, password})
 
     const salt = bcryptjs.genSaltSync()
 
