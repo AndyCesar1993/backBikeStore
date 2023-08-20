@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { ROLES } from "../helpers/constants";
-import User, {IsUser} from "../models/user";
+import User, { IsUser } from "../models/user";
 import bcryptjs from "bcryptjs"
 import { sendEmail } from "../mailer/mailer";
 import randomstring from "randomstring"
 import generateJWT from "../helpers/generateJWT";
 
-export const register = async (req:Request, res:Response):Promise<void>=>{
-    const {name, dateOfBirth, username, email, password}:IsUser = req.body
-    const user = new User({name, dateOfBirth, username, email, password})
+export const register = async (req: Request, res: Response): Promise<void> => {
+    const { name, dateOfBirth, username, email, password }: IsUser = req.body
+    const user = new User({ name, dateOfBirth, username, email, password })
 
     const salt = bcryptjs.genSaltSync()
 
@@ -16,7 +16,7 @@ export const register = async (req:Request, res:Response):Promise<void>=>{
 
     const adminKey = req.headers["admin-key"]
 
-    if (adminKey === process.env.KEYFORADMIN){
+    if (adminKey === process.env.KEYFORADMIN) {
         user.rol = ROLES.admin
     }
 
@@ -33,40 +33,46 @@ export const register = async (req:Request, res:Response):Promise<void>=>{
     })
 }
 
-export const verifyUser = async (req:Request, res:Response):Promise<void>=>{
-    const {email, code}=req.body
+export const verifyUser = async (req: Request, res: Response): Promise<void> => {
+    const { email, code } = req.body
 
-    try{
-        const user = await User.findOne({email})
+    try {
+        const user = await User.findOne({ email })
 
-        if(!user){
+        if (!user) {
             res.status(400).json({
-                msg: "No se encontró el email en la base de datos"
+                errors: {
+                    msg: "No se encontró el email en la base de datos"
+                }
             })
             return
         }
 
-        if(user.verify){
+        if (user.verify) {
             res.status(400).json({
+                errors:{
                 msg: "El usuario ya se encuentra verificado"
+                }
             })
             return
         }
 
-        if(user.code !== code){
+        if (user.code !== code) {
             res.status(401).json({
+                errors:{
                 msg: "El código ingresado es incorrecto"
+                }
             })
             return
         }
 
-        await User.findOneAndUpdate({email},{verify: true})
+        await User.findOneAndUpdate({ email }, { verify: true })
 
         res.status(200).json({
             msg: "Usuario verificado con éxito"
         })
 
-    }catch(error){
+    } catch (error) {
         console.log(error)
         res.status(500).json({
             msg: "Server error"
@@ -75,21 +81,21 @@ export const verifyUser = async (req:Request, res:Response):Promise<void>=>{
 }
 
 
-export const loginUser = async (req:Request, res:Response)=>{
-        const {username, password }: IsUser = req.body
-    try{
-        const user = await User.findOne({username})
+export const loginUser = async (req: Request, res: Response) => {
+    const { username, password }: IsUser = req.body
+    try {
+        const user = await User.findOne({ username })
 
-        if(!user){
+        if (!user) {
             res.status(400).json({
-                msg:"error finding username in database"
+                msg: "error finding username in database"
             });
             return
         }
 
         const validatePassword = bcryptjs.compareSync(password, user.password)
 
-        if(!validatePassword){
+        if (!validatePassword) {
             res.status(400).json({
                 msg: "Password is incorrect"
             });
@@ -98,14 +104,14 @@ export const loginUser = async (req:Request, res:Response)=>{
 
         const token = await generateJWT(user.id)
 
-        await User.findOneAndUpdate({username}, {logged: true})
+        await User.findOneAndUpdate({ username }, { logged: true })
 
         res.json({
             user,
             token
         })
 
-    }catch(error){
+    } catch (error) {
         console.log(`error logging :${error}`)
         res.status(500).json({
             msg: "Server error"
@@ -114,21 +120,21 @@ export const loginUser = async (req:Request, res:Response)=>{
 
 }
 
-export const loggedOut = async ( req: Request, res: Response) =>{
+export const loggedOut = async (req: Request, res: Response) => {
     const userName = req.headers["userName"]
 
-    try{
+    try {
 
-        await User.findOneAndUpdate({userName}, {logged: false}) 
+        await User.findOneAndUpdate({ userName }, { logged: false })
         console.log("logged out successfully")
         res.status(201).json({
             msg: "logged out successfully"
         })
-        
-    }catch(error){
+
+    } catch (error) {
         console.log(`error logged out:${error}`)
         res.status(500).json({
-            msg:"Server error"
+            msg: "Server error"
         })
     }
 
