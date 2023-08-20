@@ -29,7 +29,7 @@ export const register = async (req:Request, res:Response):Promise<void>=>{
     await sendEmail(email, newCode)
 
     res.status(201).json({
-        user
+        msg: `Usuario registrado correctamente, se envio codigo de verificacion a ${email}`
     })
 }
 
@@ -55,7 +55,7 @@ export const verifyUser = async (req:Request, res:Response):Promise<void>=>{
 
         if(user.code !== code){
             res.status(401).json({
-                msg: "El código ingresado en incorrecto"
+                msg: "El código ingresado es incorrecto"
             })
             return
         }
