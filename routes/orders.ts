@@ -10,11 +10,11 @@ const router = Router()
 router.get("/", [validateJWT, collectErrors], getOrders)
 
 router.post("/", [validateJWT, isVerified,
-    check("price", "The price is obligatory").not().isEmpty(),
-    check("shipingCost", "The shipingCost is obligatory").not().isEmpty(),
-    check("total", "The total is obligatory").not().isEmpty(),
-    check("shippingDetails", "The shippingDetails is obligatory").not().isEmpty(),
-    check("items", "The array of products is obligatory").not().isEmpty(),
+    check("price", "El precio es requerido").not().isEmpty(),
+    check("shipingCost", "El valor de envio es obligatorio").not().isEmpty(),
+    check("total", "El costo total es requerido").not().isEmpty(),
+    check("shippingDetails", "Falta detalles de envío").not().isEmpty(),
+    check("items", "No se encontraron productos en el carrito").not().isEmpty(),
     collectErrors,
 ],createOrders)
 

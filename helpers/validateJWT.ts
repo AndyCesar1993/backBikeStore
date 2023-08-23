@@ -7,7 +7,7 @@ const validateJWT = async ( req: Request, res: Response, next: NextFunction): Pr
 
     if(!token){
         res.status(401).json({
-            msg:"There is no token in the request"
+            msg:"No se encontro token en la petición"
         })
         return;
     }
@@ -22,7 +22,7 @@ const validateJWT = async ( req: Request, res: Response, next: NextFunction): Pr
 
         if(!userConfirmated){
             res.status(401).json({
-                msg: "Token invalid"
+                msg: "Token invalido"
             })
             return;
         }
@@ -30,7 +30,7 @@ const validateJWT = async ( req: Request, res: Response, next: NextFunction): Pr
         if(!userConfirmated.logged){
             
             res.status(401).json({
-                msg: "User Logged Out"
+                msg: "El usuario no esta logeado"
             })
             return;
         }
