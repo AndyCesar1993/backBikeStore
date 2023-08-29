@@ -88,7 +88,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
         if (!user) {
             res.status(400).json({
-                msg: "error finding username in database"
+                msg: "No se encontro el usuario en la base de datos"
             });
             return
         }
@@ -97,7 +97,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
         if (!validatePassword) {
             res.status(400).json({
-                msg: "Password is incorrect"
+                msg: "Contraseña incorrecta"
             });
             return
         }
@@ -113,26 +113,6 @@ export const loginUser = async (req: Request, res: Response) => {
 
     } catch (error) {
         console.log(`error logging :${error}`)
-        res.status(500).json({
-            msg: "Server error"
-        })
-    }
-
-}
-
-export const loggedOut = async (req: Request, res: Response) => {
-    const userName = req.headers["userName"]
-
-    try {
-
-        await User.findOneAndUpdate({ userName }, { logged: false })
-        console.log("logged out successfully")
-        res.status(201).json({
-            msg: "logged out successfully"
-        })
-
-    } catch (error) {
-        console.log(`error logged out:${error}`)
         res.status(500).json({
             msg: "Server error"
         })

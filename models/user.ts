@@ -10,7 +10,6 @@ export interface IsUser{
     rol?: string;
     code?:string; 
     verify?:boolean;
-    logged:boolean;
 }
 
 const UserSchema = new Schema<IsUser>({
@@ -46,9 +45,6 @@ const UserSchema = new Schema<IsUser>({
     verify:{
         type: Boolean,
         default: false
-    },
-    logged:{
-        type: Boolean,
     },
 })
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { collectErrors } from "../middlewares/collectErrors";
-import { register, verifyUser, loginUser, loggedOut } from "../controllers/auth";
+import { register, verifyUser, loginUser } from "../controllers/auth";
 import { existEmail, existUsername } from "../helpers/validationDB";
 
 const router = Router()
@@ -35,7 +35,5 @@ router.post("/login",
 ],
 loginUser
 )
-
-router.patch("/", loggedOut)
 
 export default router
