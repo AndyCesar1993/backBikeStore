@@ -27,7 +27,7 @@ const validateJWT = async ( req: Request, res: Response, next: NextFunction): Pr
             return;
         }
 
-        if(!userConfirmated.logged){
+        if(!userConfirmated){
             
             res.status(401).json({
                 msg: "El usuario no esta logeado"
