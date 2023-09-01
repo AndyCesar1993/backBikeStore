@@ -27,7 +27,7 @@ export const createOrders = async ( req: Request, res: Response): Promise<void> 
         ...orderData,
         user: userID,
         createdAt: new Date(),
-        status: "pending"
+        status: "En preparación"
     }
 
     const order = new Order(data);

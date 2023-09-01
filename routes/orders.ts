@@ -13,7 +13,14 @@ router.post("/", [validateJWT, isVerified,
     check("price", "El precio es requerido").not().isEmpty(),
     check("shipingCost", "El valor de envio es obligatorio").not().isEmpty(),
     check("total", "El costo total es requerido").not().isEmpty(),
-    check("shippingDetails", "Falta detalles de envío").not().isEmpty(),
+    check("shippingDetails.name", "El nombre es requerido").not().isEmpty(),
+    check("shippingDetails.cellphone", "El telefono es requerido").not().isEmpty(),
+    check("shippingDetails.location", "La ciudad es requerida").not().isEmpty(),
+    check("shippingDetails.adress", "La dirección es requerida").not().isEmpty(),
+    check("shippingDetails.cp", "El codigo postal es requerido").not().isEmpty(),
+
+
+
     check("items", "No se encontraron productos en el carrito").not().isEmpty(),
     collectErrors,
 ],createOrders)
