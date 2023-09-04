@@ -12,7 +12,7 @@ const transport = nodemailer.createTransport({
     from: "bikestore73@gmail.com"
 })
 
-export const sendEmail = async (to: string, code:string):Promise <void> =>{
+export const sendEmail = async (to: string, user:string, code:string):Promise <void> =>{
     try{
         const mailOptions={
             from: `"BikeStore" bikestore73@gmail.com`,
@@ -23,7 +23,11 @@ export const sendEmail = async (to: string, code:string):Promise <void> =>{
 
                 Código de seguridad
 
-                Usa el siguiente código de seguridad para la cuenta de BikeStore ${to}.
+                Usa el siguiente código de seguridad para su cuenta de BikeStore 
+                
+                Email: ${to}.
+
+                Usuario: ${user}
 
                 Código de seguridad: ${code}
 

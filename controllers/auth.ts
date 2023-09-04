@@ -26,7 +26,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     await user.save()
 
-    await sendEmail(email, newCode)
+    await sendEmail(email, username,  newCode)
 
     res.status(201).json({
         msg: `Usuario registrado correctamente, se envio codigo de verificacion a ${email}`
