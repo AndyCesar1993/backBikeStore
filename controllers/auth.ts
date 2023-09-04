@@ -104,8 +104,6 @@ export const loginUser = async (req: Request, res: Response) => {
 
         const token = await generateJWT(user.id)
 
-        await User.findOneAndUpdate({ username })
-
         res.json({
             user,
             token
