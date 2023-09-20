@@ -1,60 +1,68 @@
 
-									BikeStore Api
+<h1 align="center">BikeStore Api</h1>
+
+<ol>
+	<li>Description.</li>
+	<li>Installation and Configuration.</li>
+	<li>Documentation.</li>
+	<li>Depencies.</li>
+	<li>Data Base.</li>
+	<li>Examples Requests.</li>
+	<li>Connection Example.</li>
+	<li>Contact.</li>
+	<li>License.</li>
+</ol>
 
 
-		1. Description.
-		2. Installation and Configuration.
-		3. Documentation.
-		4. Depencies.
-		5. Data Base.
-		6. Examples Requests.
-		7. Connection Example.
-		8. Contact.
-		9. License.
+
+<h2>Description:</h2>
+
+<p>	With the BikeStore API, you will be able to create a user, validate it with a code, which is sent to the email, and then log in. 
+	You can also create Orders linked to the user, using a token automatically generated when logging in. Finally, they can be 		obtained through the same Token. </p>
 
 
-Description:
+<h2>Installation and Configuration:</h2>
 
-	With the BikeStore API, you will be able to create a user, validate it with a code, which is sent to the email, and then log in. 
-	You can also create Orders linked to the user, using a token automatically generated when logging in. Finally, they can be obtained through the same Token.
+<p>	In order to use the BikeStore API, it is necessary to generate the corresponding requests through the following 
+	URL: "https://back-bike-store.vercel.app" , and their respective "Query Params" : </p>
 
+ <ul>
+	 <li>Register: "auth/register"</li>
+	 <li>Verify user: "auth/verify"</li>
+	 <li>Login: "auth/login"</li>
+	 <li>Create order: "/orders"</li>
+	 <li>Get orders: "/orders"</li>
+ </ul>
 
-Installation and Configuration:
+<h2>Documentation:</h2>
 
-	In order to use the BikeStore API, it is necessary to generate the corresponding requests through the following URL: "https://back-bike-store.vercel.app", and 	their respective "Query Params" :
-
-   		* Register: "auth/register"
-   		* Verify user: "auth/verify"
- 		* Login: "auth/login"
-   		* Create order: "/orders"
-   		* Get orders: "/orders"
-
-Documentation:
-
-	In the following link you can access the documentation of the BikeStore API:
+<p>	In the following link you can access the documentation of the BikeStore API: </p>
 
 	URL:"https://documenter.getpostman.com/view/28362833/2s9YBz3v4q"
 
-Depencies:
+<h2>Depencies:</h2>
 
-	- Node.js
-	- TypeScript
-	- Nodemon
-	- Bcryptjs
-	- Cors
-	- Dontenv
-	- Random String
-	- Json Web Token
-	- Express
-	- Express Validator
-	- Nodemailer
-	- Mongoose
+<ul>
+	<li>Node.js</li>
+	<li>TypeScript</li>
+	<li>Nodemon</li>
+	<li>Bcryptjs</li>
+	<li>Cors</li>
+	<li>Dontenv</li>
+	<li>Random String</li>
+	<li>Json Web Token</li>
+	<li>Express</li>
+	<li>Express Validator</li>
+	<li>Nodemailer</li>
+	<li>Mongoose</li>
+</ul>
 
-Data Base: 
 
-	- MongoDB
+<h2>Data Base: </h2>
 
-Examples Requests: 
+	- MongoDB: "https://www.mongodb.com/es"
+
+<h2>Examples Requests: </h2>
 
 	Register: "URL/auth/register"
 		Body{
@@ -111,7 +119,7 @@ Examples Requests:
 			}
 
 
-Connection Example:
+<h2>Connection Example:</h2>
 
 		The following example shows a login request made with Axios
 
@@ -133,13 +141,13 @@ Connection Example:
 
 
 
-Contact: 
+<h2>Contact: </h2>
 	
-	Name: Cesar Martinez
-	Email: MartinezCesarJa@gmail.com
+<p>Name: Cesar Martinez</p>
+<p>Email: MartinezCesarJa@gmail.com</p>
 
 
-License:
+<h2>License: </h2>
 
 	Created By Crm.Coder
 
